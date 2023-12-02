@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), local('Roboto'),
-        url('~@/assets/fonts/Roboto.woff2') format('woff2');
+        url('@/assets/fonts/Roboto.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'Roboto';
     src: local('Roboto'), local('Rubik-Regular'),
-        url('~@/assets/fonts/Roboto.woff2') format('woff2');
+        url('@/assets/fonts/Roboto.woff2') format('woff2');
     font-style: normal;
     font-weight: 400;
 }

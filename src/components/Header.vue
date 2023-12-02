@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex h-fit flex-row items-center gap-x-4 py-6">
+  <header class="w-full flex h-fit flex-row items-center gap-x-4 pt-6">
     <img
         src="./../assets/icons/logo_1.svg"
         class="max-w-[40px] max-h-[40px] select-none"
