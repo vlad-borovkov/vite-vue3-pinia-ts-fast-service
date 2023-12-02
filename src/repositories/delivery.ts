@@ -1,4 +1,3 @@
-import { IHttpClient } from '../services/HttpClient'
 import { IAvailableDelivery } from '../types/DTO/availableDelivery'
 
 export interface IDeliveryRepository{
@@ -6,10 +5,14 @@ export interface IDeliveryRepository{
 }
 
 export default class Delivery implements IDeliveryRepository {
-    constructor(private $http: IHttpClient) {}
+    private BASE_URL: string;
 
+    constructor() {
+        this.BASE_URL = 'https://test-frontend.stage.mechta.market'
+    }
     async getAvailableDelivery(query: string): Promise<IAvailableDelivery[]> {
-        const { data } = await this.$http.get(`/delivery/check?${query}`)
-        return data as IAvailableDelivery[]
+        const  data  = await fetch(`${this.BASE_URL}/delivery/check?search=${query}`)
+        const response = await data.json();
+        return response as IAvailableDelivery[]
     }
 }

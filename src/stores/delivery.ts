@@ -1,15 +1,17 @@
 import {defineStore} from 'pinia';
+import Delivery from './../repositories/delivery.ts'
 export const useDeliveryStore = defineStore('delivery', {
     state: () => ({
         availableDelivery: [],
     }),
     getters: {
-        availableDelivery: (state) => state,
+        getAvailableDelivery: (state) => state,
     },
     actions: {
-        getAvailableDelivery(query: string) {
-            // todo: прокинуть глобально в декларациях $repository и $axios
-            const responce = this.$repositories
+        async fetchAvailableDelivery(query: string) {
+            const api = new Delivery()
+            const response = await api.getAvailableDelivery(query)
+            this.availableDelivery = response
         },
     },
 })

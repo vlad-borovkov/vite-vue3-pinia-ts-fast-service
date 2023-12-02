@@ -26,7 +26,10 @@
           </div>
         </div>
       </div>
-      <Footer/>
+      <div class="hidden-mobile">
+        <Footer/>
+      </div>
+
     </div>
   </div>
 </template>
@@ -53,6 +56,11 @@ export default {
 </script>
 
 <style scoped>
+.hidden-mobile {
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
 .grid-area-search {
   grid-area: search;
 }

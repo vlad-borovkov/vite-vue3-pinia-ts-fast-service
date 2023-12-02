@@ -1,24 +1,25 @@
 <template>
-  <div v-if="isVisible"
-       class="grid-area-list bg-secondBg rounded-tl-[40px] rounded-tr-[40px] rounded-bl-[40px]">
-    <div class="fixed block w-full h-full">
+  <div class="grid-area-list flex flex-col justify-center bg-secondBg rounded-tl-[40px]
+  rounded-tr-[40px] h-[321px] lg:rounded-tr-[0px] lg:rounded-bl-[40px] lg:h-full">
+    <div v-if="isVisible"
+         class="w-full h-full flex lg:fixed lg:block">
           <img
           src="./../assets/images/car_on_road.png"
-          class="absolute bottom-0 w-[50%] left-0"
+          class="object-contain align-middle lg:absolute lg:bottom-0 lg:w-[50%] lg:left-0"
           >
-    </div>
   </div>
-  <div v-else class="w-full h-full flex flex-col gap-y-5">
-    <DeliveryDetailCard
-        v-for="(info, idx) in deliveryInfo"
-        :key="idx"
-        :type="info.type"
-        :available="info.available"
-        :price="info.price"
-        :isActive="idx === activeCardIndex"
-        @toggle-active="toggleActiveCard(idx)"
-        class="flex-1"
-    />
+  <div v-else class="w-[70%] h-[70%] flex flex-col gap-y-5 bg-secondBg lg:w-[70%] lg:h-[70%] lg:ml-[10%]">
+      <DeliveryDetailCard
+          v-for="(info, idx) in deliveryStore.availableDelivery"
+          :key="idx"
+          :type="info.type"
+          :available="info.available"
+          :price="info.price"
+          :isActive="idx === activeCardIndex"
+          @toggle-active="toggleActiveCard(idx)"
+          class="flex-1"
+      />
+    </div>
   </div>
 </template>
 
@@ -26,7 +27,8 @@
 import DeliveryDetailCard from './DeliveryDetailCard.vue'
 import { computed, onBeforeMount, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-// todo: import delivery from 'repositories'
+import {useDeliveryStore} from "@/stores/delivery.ts";
+
 export default {
   name: "CardList",
   components: {
@@ -34,12 +36,15 @@ export default {
   },
   setup() {
     const route = useRoute();
+    const deliveryStore = useDeliveryStore()
+
     const routeData = computed(() => {
       return route.query.search;
     });
     const isVisible = ref<boolean>(true);
-    const deliveryInfo = ref();
+
     const activeCardIndex = ref();
+
     const handleRouteChange = () => {
       setTimeout(() => {
         isVisible.value = !routeData.value;
@@ -48,12 +53,13 @@ export default {
     watch(routeData, handleRouteChange);
     watch(routeData, (newValue, oldValue) => {
       if (newValue !== oldValue) {
-        getDeliveryInfo(newValue as string);
+        deliveryStore.fetchAvailableDelivery(newValue as string);
       }
     });
+
     onBeforeMount(() => {
       handleRouteChange();
-      // getDeliveryInfo(routeData.value as string);
+      deliveryStore.fetchAvailableDelivery(routeData.value as string)
     });
 
     const toggleActiveCard = (index: number) => {
@@ -68,10 +74,10 @@ export default {
     return {
       route,
       isVisible,
-      deliveryInfo,
       activeCardIndex,
       handleRouteChange,
-      toggleActiveCard
+      toggleActiveCard,
+      deliveryStore
     }
   }
 }
