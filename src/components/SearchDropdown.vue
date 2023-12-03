@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { computed, ref, watch } from 'vue';
 import SearchButton from "@/components/SearchButton.vue";
 import { popularCities, availableCities } from './../assets/mock/cities';
@@ -71,10 +71,8 @@ export default {
     const buttonType = ref<string>('enter')
     const showAllCities = ref<boolean>(false);
     const router = useRouter();
-    const route = useRoute();
 
     watch(() => inputData.value, (newValue) => {
-      console.log(newValue)
       matchingCities.value = popularCities.filter(city => city.toLowerCase().startsWith(newValue.toLowerCase()) && newValue !== '');
       buttonType.value = matchingCities.value.length > 0 ? 'enter' : 'delete';
     });

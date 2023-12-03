@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts">
-import { useRouter } from "vue-router";
 import SearchCities from "@/components/SearchCities.vue";
 import CardList from "@/components/CardList.vue";
 import Footer from "@/components/Footer.vue";
