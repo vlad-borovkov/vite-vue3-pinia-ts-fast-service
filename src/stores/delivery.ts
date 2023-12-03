@@ -3,7 +3,7 @@ import Delivery from './../repositories/delivery.ts'
 import {IAvailableDelivery, IAvailableDeliveryID} from "@/types/DTO/availableDelivery.ts";
 export const useDeliveryStore = defineStore('delivery', {
     state: () => ({
-        availableDelivery: [],
+        availableDelivery: [] as IAvailableDeliveryID[],
     }),
     getters: {
         getAvailableDelivery: (state) => state,

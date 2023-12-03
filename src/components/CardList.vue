@@ -12,7 +12,7 @@
   </div>
   <div v-else class="w-[90%] h-[93%] flex flex-col gap-y-5 bg-secondBg lg:w-[55%] lg:h-[70%] lg:ml-[10%] lg:w-[70%] lg:h-[70%]">
       <DeliveryDetailCard
-          v-for="(info, idx) in deliveryStore.availableDelivery"
+          v-for="info in deliveryStore.availableDelivery"
           :key="info.id"
           :type="info.type"
           :available="info.available"
@@ -30,6 +30,7 @@ import DeliveryDetailCard from './DeliveryDetailCard.vue'
 import { computed, onBeforeMount, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import {useDeliveryStore} from "@/stores/delivery.ts";
+
 
 export default {
   name: "CardList",
