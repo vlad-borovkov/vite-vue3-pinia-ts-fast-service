@@ -3,12 +3,11 @@
   rounded-tr-[40px] h-full lg:rounded-tr-[0px] lg:rounded-bl-[40px] lg:h-full lg:items-baseline">
     <div v-if="isVisible"
          class="w-full h-full flex items-end justify-center">
-
           <img
           src="@/assets/images/car_on_road.png"
           class="object-contain w-[100%]"
+          alt="Car on road"
           >
-
   </div>
   <div v-else class="w-[90%] h-[93%] flex flex-col gap-y-5 bg-secondBg lg:w-[55%] lg:h-[70%] lg:ml-[10%] lg:w-[70%] lg:h-[70%]">
       <DeliveryDetailCard
