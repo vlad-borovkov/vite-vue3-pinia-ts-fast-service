@@ -5,7 +5,7 @@
          class="w-full h-full flex items-end justify-center">
 
           <img
-          src="./../assets/images/car_on_road.png"
+          src="@/assets/images/car_on_road.png"
           class="object-contain w-[100%]"
           >
 
