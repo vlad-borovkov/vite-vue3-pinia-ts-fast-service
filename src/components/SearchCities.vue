@@ -1,6 +1,6 @@
 <template>
-  <div class="grid-area-search flex flex-wrap flex-col content-end">
-    <div class="mr-[15%] w-[55%]">
+  <div class="grid-area-search flex flex-wrap flex-col content-center lg:content-end">
+    <div class="w-[80%] lg:w-[55%] lg:mr-[15%]">
       <Header/>
 
       <div class="flex flex-col">
@@ -12,11 +12,11 @@
       </span>
       </div>
 
-      <div class="w-full mt-[80px] relative z-10">
+      <div class="w-full mt-[40px] relative z-10 lg:mt-[80px]">
         <SearchDropdown />
       </div>
 
-      <div class="pt-[155px] flex flex-col gap-y-5 lg:pt-[160px]">
+      <div class="pt-[115px] flex flex-col gap-y-5 lg:pt-[160px]">
         <p class="text-base text-mainDark font-normal select-none lg:text-2xl">
           Most popular cities
         </p>

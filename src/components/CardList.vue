@@ -1,22 +1,24 @@
 <template>
-  <div class="grid-area-list flex flex-col justify-center bg-secondBg rounded-tl-[40px]
-  rounded-tr-[40px] h-[321px] lg:rounded-tr-[0px] lg:rounded-bl-[40px] lg:h-full">
+  <div class="grid-area-list flex flex-col justify-center items-center bg-secondBg rounded-tl-[40px]
+  rounded-tr-[40px] h-full lg:rounded-tr-[0px] lg:rounded-bl-[40px] lg:h-full lg:items-baseline">
     <div v-if="isVisible"
-         class="w-full h-full flex lg:fixed lg:block">
+         class="w-full h-full flex items-end justify-center">
+
           <img
           src="./../assets/images/car_on_road.png"
-          class="object-contain align-middle lg:absolute lg:bottom-0 lg:w-[50%] lg:left-0"
+          class="object-contain w-[100%]"
           >
+
   </div>
-  <div v-else class="w-[70%] h-[70%] flex flex-col gap-y-5 bg-secondBg lg:w-[70%] lg:h-[70%] lg:ml-[10%]">
+  <div v-else class="w-[90%] h-[93%] flex flex-col gap-y-5 bg-secondBg lg:w-[55%] lg:h-[70%] lg:ml-[10%] lg:w-[70%] lg:h-[70%]">
       <DeliveryDetailCard
           v-for="(info, idx) in deliveryStore.availableDelivery"
-          :key="idx"
+          :key="info.id"
           :type="info.type"
           :available="info.available"
           :price="info.price"
-          :isActive="idx === activeCardIndex"
-          @toggle-active="toggleActiveCard(idx)"
+          :isActive="info.id === activeCardId"
+          @toggle-active="toggleActiveCard(info.id)"
           class="flex-1"
       />
     </div>
@@ -43,7 +45,7 @@ export default {
     });
     const isVisible = ref<boolean>(true);
 
-    const activeCardIndex = ref();
+    const activeCardId = ref();
 
     const handleRouteChange = () => {
       setTimeout(() => {
@@ -52,29 +54,26 @@ export default {
     };
     watch(routeData, handleRouteChange);
     watch(routeData, (newValue, oldValue) => {
-      if (newValue !== oldValue) {
+      if (newValue !== oldValue && routeData.value !== undefined ) {
         deliveryStore.fetchAvailableDelivery(newValue as string);
       }
     });
 
     onBeforeMount(() => {
       handleRouteChange();
-      deliveryStore.fetchAvailableDelivery(routeData.value as string)
+      if (routeData.value !== undefined ) {
+        deliveryStore.fetchAvailableDelivery(routeData.value as string)
+      }
     });
 
-    const toggleActiveCard = (index: number) => {
-      activeCardIndex.value = index;
+    const toggleActiveCard = (id: number) => {
+      activeCardId.value = id;
     };
-
-    // const getDeliveryInfo = (search: string) => {
-    // todo добавить вызов с api
-    // };
-
 
     return {
       route,
       isVisible,
-      activeCardIndex,
+      activeCardId,
       handleRouteChange,
       toggleActiveCard,
       deliveryStore

@@ -37,6 +37,7 @@ export default {
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     grid-template-areas:"search" "list";
+    grid-row-gap: 30px;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-wrap justify-between gap-6 mt-[102px] mb-[10px] px-5 lg:px-0">
+  <footer class="flex flex-wrap justify-between gap-6 mt-[10px] mb-[10px] px-5 lg:px-0 lg:mt-[102px]">
     <div class="text-mainDark text-sm font-normal text-opacity-50">
       All rights reserved<br />
       Fast service {{ currentYear }}
