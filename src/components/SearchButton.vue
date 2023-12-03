@@ -8,7 +8,7 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
 import { computed } from "vue";
 export default {
   name: "SearchButton",

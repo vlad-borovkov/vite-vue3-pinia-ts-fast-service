@@ -13,8 +13,7 @@
   </footer>
 </template>
 
-<script>
-import {useRouter} from "vue-router";
+<script lang="ts">
 import {computed} from "vue";
 export default {
   name: "Footer",
