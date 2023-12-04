@@ -76,7 +76,6 @@ export default {
       handleRouteChange,
       toggleActiveCard,
       deliveryStore,
-      CarOnRoad
     }
   }
 }
@@ -85,20 +84,5 @@ export default {
 <style scoped>
 .grid-area-list {
   grid-area: list;
-}
-.car-animation {
-  animation: moveCar 1s linear infinite;
-}
-
-@keyframes moveCar {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateY(20px);
-  }
-  70% {
-    transform: translateY(10px);
-  }
 }
 </style>
