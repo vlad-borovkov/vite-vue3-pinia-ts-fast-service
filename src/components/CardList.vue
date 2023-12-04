@@ -4,7 +4,7 @@
     <div v-if="isVisible"
          class="w-full h-full flex items-end justify-center">
           <img
-          :src="CarOnRoad"
+          src="@/assets/images/car_on_road.png"
           class="object-contain w-[100%]"
           alt="Car on road"
           >
@@ -29,8 +29,6 @@ import DeliveryDetailCard from './DeliveryDetailCard.vue'
 import { computed, onBeforeMount, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import {useDeliveryStore} from "@/stores/delivery.ts";
-import  CarOnRoad from "@/assets/images/car_on_road.png";
-
 
 export default {
   name: "CardList",
